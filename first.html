@@ -1,0 +1,154 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>first</title>
+</head>
+<style>
+  .one{
+    background-color: #DDD;
+    font-size: 20px;
+  }
+  .two{
+    background-color:#fff;
+    font-size: 30px;
+  }
+</style>
+<body>
+<div id="con" class="tryand">let me try</div> 
+  <input type="button" value="alert" onclick="funFirst()"></input>
+  <input type="button" value="请输入" onclick="funTwo()"></input>
+  <input type="button" value="打开新窗口" onclick="funThree()"></input>
+  <input type="button" value="css改变" onclick="funFour()">
+  <script type="text/javascript">
+    function funFirst(){
+      var message=confirm("you will be stronger")
+      if(message==false) document.write("what the hell?");
+      else document.write("good");
+    }
+    function funTwo(){
+      var data=prompt("请输入你的成绩:","");
+      if(data>=60) document.write("good");
+      else document.write("bad");
+    } 
+    function funThree(){
+     window.open('http://www.imooc.com','_blank','scrollbars=no,width=200px,toolbar=yes,menubar=yes,status=yes');
+    }
+    function funFour(){
+        var a=document.getElementById("con");
+        a.className=("one");
+    }
+    var put=document.getElementById("get");
+    document.write(put);
+    var ch=document.getElementById("con");
+    document.write(ch+"<br>");
+    ch.innerHTML="we will know";
+   
+    </script>
+     function wtf1(strTemp){ strTemp = strTemp.substring(0,strTemp.length-1);   return strTemp;}
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+  *{
+    margin:0px;
+    padding:0px;
+  }
+  #mask{
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+    background:#000;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+  }
+  #login{
+      position: fixed;
+      z-index: 1001;
+  }
+  .loginContent{
+    background:url(../爱特作业架/image/c.png) no-repeat;
+    width: 300px;
+    height: 400px;
+    position: relative;
+  }
+  #close{
+    position:absolute;
+    top:5px;
+    right:5px;
+    width:66px;
+    height:33px;
+  }
+  .tflase{
+    display:block;
+     text-align:center;
+  }
+  .tflase:link{
+    font-size:33px;
+    color:white;
+    text-decoration:none;
+  }
+  .tflase:hover{
+    background:rgb(142,66,42);
+    color:white;
+    font-size:33px;
+  }
+  .a{
+    width: 110px;
+    height: 600px;
+  background: #134566;
+  }
+  </style>
+</head>
+<body>
+ <script type="text/javascript">
+   window.onload=function(){ functiontext()}
+   //加载完了文档再执行；因为我们有时需要获取页面的一些节点，在文档没有加载完之前是不存在的
+   function functiontext(){
+    var aLogin=document.getElementById("loginButton");//上面也提到，所以我们现在获取到这个元素节点
+    aLogin.onclick=function(){
+    var sHeight=document.documentElement.scrollHeight;//我们发现是需要获取到整个页面的长度，宽度；这就用document.documentElementscroll____
+    var sWidth=document.documentElement.scrollWidth;
+    var aMask=document.createElement("div");
+    //创建一个元素用document.creatElement("")双引号里加标签
+        aMask.id="mask";//给这个div一个id，方便写css
+        aMask.style.height=sHeight+"px";//用js给页面元素赋值尤其是给他们写css是要加上style属性
+        aMask.style.width=sWidth+"px";
+        // aMask.style.width=sWidth+"px";
+        //加“px”：因为本来sHeight是没有单位的
+        document.body.appendChild(aMask);//现在这些都是仅位于js中，所以要追加插入这个节点
+    var bLogin=document.createElement("div");
+        bLogin.id="login";
+    var bWidth=document.documentElement.clientWidth;
+    var bHeight=document.documentElement.clientHeight;
+    bLogin.innerHTML="<div class='loginContent'><div id='close'><a href='#' class='tflase'>&times</a></div></div>";
+    document.body.appendChild(bLogin);
+    var eHeight=bLogin.offsetHeight;
+    //获取元素的高度,需写在appendChild这语句下，不然bLogin只是存在js中,没有进入DOM里是不可见的，是无法获取高度，宽度的
+    var eWidth=bLogin.offsetWidth;//获取元素的宽度
+    bLogin.style.left=(bWidth-eWidth)/2+"px";
+    bLogin.style.top=(bHeight-eHeight)/2+"px";
+    var kit=document.getElementById("close");
+    kit.onclick=function(){
+      document.body.removeChild(aMask);
+      document.body.removeChild(bLogin);
+    }
+    aMask.onclick=function(){
+      document.body.removeChild(aMask);
+      document.body.removeChild(bLogin);
+    }
+   }
+   }
+ </script> 
+ <button type="button" id="loginButton">登录</button>
+ <div class="a"></div>
+ <div class="a"></div>
+ <div class="a"></div>
+ <div class="a"></div>
+</body>
+</html>
